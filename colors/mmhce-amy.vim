@@ -73,8 +73,9 @@ fun s:setCTerm()
         let components = matchlist(hex, '\(..\)\(..\)\(..\)')
         let rgb = components[1] . '/' . components[2] . '/' . components[3]
 
-        execute "! printf \"\\033]4;" . index . ";rgb:" . rgb . "\\033\\\\\"" 
+        execute ":silent ! printf \"\\033]4;" . index . ";rgb:" . rgb . "\\033\\\\\"" 
     endfor
+    redraw!
 endfun
 
 call s:setCTerm()
