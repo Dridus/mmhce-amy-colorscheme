@@ -66,7 +66,7 @@ let s:cterm.bfbfbf = "40"
 let s:cterm.c080c0 = "41"
 let s:cterm.d0d0ff = "42"
 
-fun s:setCterm()
+fun s:setCTerm()
     for pair in items(s:cterm)
         let hex = pair[0]
         let index = pair[1]
