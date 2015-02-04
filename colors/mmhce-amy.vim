@@ -73,8 +73,16 @@ fun s:setCTerm()
         let components = matchlist(hex, '\(..\)\(..\)\(..\)')
         let rgb = components[1] . '/' . components[2] . '/' . components[3]
 
-        execute ":silent ! printf \"\\033]4;" . index . ";rgb:" . rgb . "\\033\\\\\"" 
+        execute "silent ! printf \"\\033]4;" . index . ";rgb:" . rgb . "\\033\\\\\"" 
     endfor
+    execute "silent ! printf \"\\033P\\033]Pg" . s:amy.foreground . "\\033\\\\\""
+    execute "silent ! printf \"\\033P\\033]Ph" . s:amy.background . "\\033\\\\\""
+    execute "silent ! printf \"\\033P\\033]Pi" . s:amy.foreground . "\\033\\\\\""
+    execute "silent ! printf \"\\033P\\033]Pj" . s:amy.selection . "\\033\\\\\""
+    execute "silent ! printf \"\\033P\\033]Pk" . s:amy.foreground . "\\033\\\\\""
+    execute "silent ! printf \"\\033P\\033]Pl" . s:amy.foreground . "\\033\\\\\""
+    execute "silent ! printf \"\\033P\\033]Pm" . s:amy.caret . "\\033\\\\\""
+
     redraw!
 endfun
 
@@ -142,33 +150,33 @@ call <sid>hi("TabLineFill",   s:amy.foreground, "")
 call <sid>hi("TabLineSel",    s:amy.foreground, "")
 
 " Standard syntax highlighting
-call <sid>hi("Boolean",      s:amy.builtinConstant)
-call <sid>hi("Character",    s:amy.character)
-call <sid>hi("Comment",      s:amy.comment)
-call <sid>hi("Conditional",  s:amy.keyword)
-call <sid>hi("Constant",     s:amy.libraryConstant)
-call <sid>hi("Define",       s:amy.compilerDirective)
-call <sid>hi("Delimiter",    s:amy.punctuation)
-call <sid>hi("Float",        s:amy.numeric)
-call <sid>hi("Function",     s:amy.functionName)
-call <sid>hi("Identifier",   s:amy.character)
-call <sid>hi("Include",      s:amy.functionName)
-call <sid>hi("Keyword",      s:amy.keyword)
-call <sid>hi("Label",        s:amy.classType)
-call <sid>hi("Number",       s:amy.numeric)
-call <sid>hi("Operator",     s:amy.foreground)
-call <sid>hi("PreProc",      s:amy.classType)
-call <sid>hi("Repeat",       s:amy.classType)
-call <sid>hi("Special",      s:amy.keywordOperator)
-call <sid>hi("SpecialChar",  s:amy.punctuation)
-call <sid>hi("Statement",    s:amy.character)
-call <sid>hi("StorageClass", s:amy.classType)
-call <sid>hi("String",       s:amy.string)
-call <sid>hi("Structure",    s:amy.keyword)
-call <sid>hi("Tag",          s:amy.classType)
-call <sid>hi("Todo",         s:amy.invalidDeprecated)
-call <sid>hi("Type",         s:amy.classType)
-call <sid>hi("Typedef",      s:amy.classType)
+call <sid>hi("Boolean",      s:amy.builtinConstant, "")
+call <sid>hi("Character",    s:amy.character, "")
+call <sid>hi("Comment",      s:amy.comment, "")
+call <sid>hi("Conditional",  s:amy.keyword, "")
+call <sid>hi("Constant",     s:amy.libraryConstant, "")
+call <sid>hi("Define",       s:amy.compilerDirective, "")
+call <sid>hi("Delimiter",    s:amy.punctuation, "")
+call <sid>hi("Float",        s:amy.numeric, "")
+call <sid>hi("Function",     s:amy.functionName, "")
+call <sid>hi("Identifier",   s:amy.character, "")
+call <sid>hi("Include",      s:amy.functionName, "")
+call <sid>hi("Keyword",      s:amy.keyword, "")
+call <sid>hi("Label",        s:amy.classType, "")
+call <sid>hi("Number",       s:amy.numeric, "")
+call <sid>hi("Operator",     s:amy.foreground, "")
+call <sid>hi("PreProc",      s:amy.classType, "")
+call <sid>hi("Repeat",       s:amy.classType, "")
+call <sid>hi("Special",      s:amy.keywordOperator, "")
+call <sid>hi("SpecialChar",  s:amy.punctuation, "")
+call <sid>hi("Statement",    s:amy.character, "")
+call <sid>hi("StorageClass", s:amy.classType, "")
+call <sid>hi("String",       s:amy.string, "")
+call <sid>hi("Structure",    s:amy.keyword, "")
+call <sid>hi("Tag",          s:amy.classType, "")
+call <sid>hi("Todo",         s:amy.invalidDeprecated, "")
+call <sid>hi("Type",         s:amy.classType, "")
+call <sid>hi("Typedef",      s:amy.classType, "")
 
 " C highlighting
 " call <sid>hi("cOperator",   s:gui0C, "", s:cterm0C, "", "")
